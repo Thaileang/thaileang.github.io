@@ -3,287 +3,566 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thaileang Sung - AI/ML Engineer & Researcher</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/modern.css">
+    <title>Thaileang Sung — Archive 001</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+    :root {
+        --font-display: 'Space Mono', monospace;
+        --font-body: 'Inter', sans-serif;
+        --bg: #0f0f0f;
+        --surface: #1a1a1a;
+        --text-primary: #e8e8e8;
+        --text-muted: #666666;
+        --accent: #3b82f6;
+        --accent-active: #1d4ed8;
+        --border: #2a2a2a;
+        --highlight: rgba(59,130,246,0.15);
+        --space-unit: 4px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+        background: var(--bg);
+        color: var(--text-primary);
+        font-family: var(--font-body);
+        font-size: 15px;
+        line-height: 1.6;
+        letter-spacing: -0.01em;
+    }
+    h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { color: var(--text-primary); text-decoration: underline; }
+    .container { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+
+    /* HEADER */
+    header {
+        padding: 60px 0 40px;
+        border-bottom: 1px solid var(--border);
+    }
+    .header-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 40px;
+    }
+    .profile-section { display: flex; gap: 24px; }
+    .profile-image {
+        flex-shrink: 0;
+        width: 120px;
+        height: 120px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+    }
+    .profile-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .profile-info h1 {
+        font-size: 28px;
+        line-height: 1.2;
+        margin-bottom: 8px;
+        letter-spacing: -0.02em;
+    }
+    .profile-info .title {
+        font-family: var(--font-display);
+        font-size: 14px;
+        color: var(--accent);
+        margin-bottom: 12px;
+    }
+    .profile-info .objective {
+        font-size: 13px;
+        color: var(--text-muted);
+        max-width: 540px;
+    }
+
+    .contact-grid {
+        margin-top: 24px;
+        padding-top: 24px;
+        border-top: 1px solid var(--border);
+    }
+    .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 12px;
+        font-family: var(--font-display);
+        color: var(--text-muted);
+        margin-bottom: 6px;
+    }
+    .contact-item i { color: var(--text-muted); width: 16px; text-align: center; }
+    .social-links {
+        display: flex;
+        gap: 8px;
+        margin-top: 16px;
+    }
+    .social-links a {
+        width: 32px;
+        height: 32px;
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-muted);
+        transition: border-color 0.15s, color 0.15s;
+    }
+    .social-links a:hover {
+        border-color: var(--accent);
+        color: var(--text-primary);
+    }
+
+    /* MAIN */
+    main { padding: 40px 0; }
+    section { margin-bottom: 56px; }
+    .section-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+    .section-header h2 {
+        font-size: 14px;
+        font-family: var(--font-display);
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+        color: var(--text-muted);
+    }
+    .section-header h2::before {
+        content: "►";
+        font-size: 10px;
+        color: var(--accent);
+        margin-top: 2px;
+    }
+    .section-header h2::after {
+        content: "0" attr(data-index);
+        font-size: 10px;
+        margin-left: 8px;
+        opacity: 0.5;
+    }
+
+    /* EXPERTISE GRID */
+    .expertise-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+    .expertise-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        padding: 18px;
+        transition: border-color 0.15s;
+    }
+    .expertise-card:hover { border-color: var(--accent); }
+    .expertise-card h3 {
+        font-size: 13px;
+        margin-bottom: 6px;
+    }
+    .expertise-card p {
+        font-size: 12px;
+        color: var(--text-muted);
+    }
+
+    /* SKILLS GRID */
+    .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    .skill-category h3 {
+        font-size: 12px;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 12px;
+        letter-spacing: 0.02em;
+    }
+    .skills-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    .skill-tag {
+        font-family: var(--font-display);
+        font-size: 11px;
+        background: var(--bg);
+        border: 1px solid var(--border);
+        padding: 4px 10px;
+        border-radius: 2px;
+    }
+
+    /* TIMELINE */
+    .timeline {
+        border-left: 1px solid var(--border);
+        margin-left: 12px;
+        padding-left: 24px;
+    }
+    .timeline-item {
+        position: relative;
+        padding-bottom: 28px;
+        margin-bottom: 16px;
+    }
+    .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -24px;
+        top: 8px;
+        width: 10px;
+        height: 10px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 50%;
+    }
+    .timeline-date {
+        font-family: var(--font-display);
+        font-size: 11px;
+        color: var(--text-muted);
+        margin-bottom: 4px;
+    }
+    .timeline-content h3 {
+        font-size: 14px;
+        margin-bottom: 2px;
+    }
+    .timeline-content .company {
+        font-size: 12px;
+        color: var(--accent);
+        margin-bottom: 4px;
+        font-family: var(--font-display);
+    }
+    .timeline-content .description {
+        font-size: 13px;
+        color: var(--text-muted);
+    }
+    .achievements {
+        list-style: none;
+        margin-top: 8px;
+        padding-left: 0;
+    }
+    .achievements li {
+        font-size: 12px;
+        color: var(--text-muted);
+        padding-left: 16px;
+        position: relative;
+        margin-bottom: 4px;
+    }
+    .achievements li::before {
+        content: "→";
+        position: absolute;
+        left: 0;
+        color: var(--text-muted);
+        font-size: 10px;
+    }
+
+    /* PROJECTS */
+    .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+    .project-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        padding: 18px;
+    }
+    .project-card h3 {
+        font-size: 13px;
+        margin-bottom: 8px;
+        line-height: 1.4;
+    }
+    .project-card p {
+        font-size: 12px;
+        color: var(--text-muted);
+        margin-bottom: 12px;
+        line-height: 1.5;
+    }
+    .project-tech { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tech-tag {
+        font-family: var(--font-display);
+        font-size: 10px;
+        background: var(--bg);
+        border: 1px solid var(--border);
+        padding: 3px 8px;
+        color: var(--text-muted);
+    }
+
+    /* PUBLICATIONS */
+    .publications-list {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+    .publication-item h3 {
+        font-size: 13px;
+        margin-bottom: 4px;
+    }
+    .publication-item h3 a {
+        word-break: break-word;
+    }
+    .publication-item .journal {
+        font-family: var(--font-display);
+        font-size: 11px;
+        color: var(--accent);
+        margin-bottom: 2px;
+    }
+    .publication-item .description {
+        font-size: 12px;
+        color: var(--text-muted);
+    }
+    .publications-footer {
+        margin-top: 24px;
+        padding-top: 16px;
+        border-top: 1px solid var(--border);
+    }
+    .scholar-link {
+        font-family: var(--font-display);
+        font-size: 12px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .scholar-link i { opacity: 0.7; }
+
+    /* EDUCATION */
+    .education-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+    .education-item {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        padding: 16px;
+    }
+    .education-item h3 {
+        font-size: 13px;
+        margin-bottom: 4px;
+        line-height: 1.4;
+    }
+    .education-item .institution {
+        font-family: var(--font-display);
+        font-size: 11px;
+        color: var(--accent);
+        margin-bottom: 2px;
+    }
+    .education-item .year {
+        font-family: var(--font-display);
+        font-size: 11px;
+        color: var(--text-muted);
+    }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Header Section -->
-        <header class="header">
-            <div class="header-content">
+    <header>
+        <div class="container">
+            <div class="header-grid">
                 <div class="profile-section">
                     <div class="profile-image">
                         <img src="images/image.jpg" alt="Thaileang Sung" />
                     </div>
                     <div class="profile-info">
-                        <h1 class="name">Thaileang Sung</h1>
+                        <h1>Thaileang Sung</h1>
                         <p class="title">AI/ML Engineer & Researcher</p>
                         <p class="objective">Seeking advanced opportunities in AI research and development, specializing in computer vision, deep learning, and 3D point cloud applications.</p>
+                        <div class="contact-grid">
+                            <div class="contact-item"><i class="fas fa-envelope"></i><span>thaileang@live.com</span></div>
+                            <div class="contact-item"><i class="fas fa-phone"></i><span>+82-10-2714-6777</span></div>
+                            <div class="contact-item"><i class="fas fa-globe"></i><span>thaileang.github.io</span></div>
+                            <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Gwanak-gu, Seoul, South Korea</span></div>
+                            <div class="social-links">
+                                <a href="https://www.facebook.com/sung.thaileang" target="_blank"><i class="fab fa-facebook"></i></a>
+                                <a href="http://bit.ly/3fZTNzF" target="_blank"><i class="fas fa-graduation-cap"></i></a>
+                                <a href="javascript:window.print()"><i class="fas fa-print"></i></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="contact-section">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>thaileang@live.com</span>
+                <div></div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section>
+            <div class="section-header"><h2 data-index="01">AI/ML Expertise</h2></div>
+            <div class="expertise-grid">
+                <div class="expertise-card"><h3>Machine Learning</h3><p>ML algorithms, model development, and deployment</p></div>
+                <div class="expertise-card"><h3>Computer Vision</h3><p>Image processing, 3D reconstruction, visual recognition</p></div>
+                <div class="expertise-card"><h3>Deep Learning</h3><p>Neural networks, GANs, advanced architectures</p></div>
+                <div class="expertise-card"><h3>3D Point Clouds</h3><p>3D data processing, registration, analysis</p></div>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-header"><h2 data-index="02">Technical Skills</h2></div>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Java</span>
                     </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <span>+82-10-2714-6777</span>
+                </div>
+                <div class="skill-category">
+                    <h3>AI/ML Frameworks</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag">PyTorch</span>
+                        <span class="skill-tag">TensorFlow</span>
+                        <span class="skill-tag">OpenCV</span>
                     </div>
-                    <div class="contact-item">
-                        <i class="fas fa-globe"></i>
-                        <span>thaileang.github.io</span>
+                </div>
+                <div class="skill-category">
+                    <h3>Development Frameworks</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag">FastAPI</span>
+                        <span class="skill-tag">Flask</span>
+                        <span class="skill-tag">Spring Boot</span>
+                        <span class="skill-tag">Micronaut</span>
                     </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Gwanak-gu, Seoul, South Korea</span>
-                    </div>
-                    <div class="social-links">
-                        <a href="https://www.facebook.com/sung.thaileang" target="_blank">
-                            <i class="fab fa-facebook"></i>
-                        </a>
-                        <a href="http://bit.ly/3fZTNzF" target="_blank">
-                            <i class="fas fa-graduation-cap"></i>
-                        </a>
-                        <a href="javascript:window.print()">
-                            <i class="fas fa-print"></i>
-                        </a>
+                </div>
+                <div class="skill-category">
+                    <h3>Specializations</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag">Computer Vision</span>
+                        <span class="skill-tag">3D Registration</span>
+                        <span class="skill-tag">Image Processing</span>
+                        <span class="skill-tag">IoT Systems</span>
                     </div>
                 </div>
             </div>
-        </header>
+        </section>
 
-        <!-- Main Content -->
-        <main class="main-content">
-            <!-- AI/ML Expertise Section -->
-            <section class="section">
-                <h2 class="section-title">
-                    <i class="fas fa-robot"></i>
-                    AI/ML Expertise
-                </h2>
-                <div class="expertise-grid">
-                    <div class="expertise-card">
-                        <h3>Machine Learning</h3>
-                        <p>ML algorithms, model development, and deployment</p>
-                    </div>
-                    <div class="expertise-card">
-                        <h3>Computer Vision</h3>
-                        <p>Image processing, 3D reconstruction, and visual recognition systems</p>
-                    </div>
-                    <div class="expertise-card">
-                        <h3>Deep Learning</h3>
-                        <p>Neural networks, GANs, and advanced deep learning architectures</p>
-                    </div>
-                    <div class="expertise-card">
-                        <h3>3D Point Clouds</h3>
-                        <p>3D data processing, registration, and analysis applications</p>
+        <section>
+            <div class="section-header"><h2 data-index="03">Professional Experience</h2></div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">May 2024 — Present</div>
+                    <div class="timeline-content">
+                        <h3>AI Project Manager</h3>
+                        <p class="company">My04 Company, R&D Department</p>
+                        <p class="description">Leading research in AI and 3D reconstruction and representation technologies.</p>
                     </div>
                 </div>
-            </section>
+                <div class="timeline-item">
+                    <div class="timeline-date">Oct 2019 — 2023</div>
+                    <div class="timeline-content">
+                        <h3>Development Manager</h3>
+                        <p class="company">AI-Tech Corp., South Korea</p>
+                        <p class="description">Led projects in machine learning, deep learning, and 3D point cloud applications.</p>
+                        <ul class="achievements">
+                            <li>Designed system/software architecture for AI applications</li>
+                            <li>Led cross-functional development teams</li>
+                            <li>Implemented cutting-edge ML/DL solutions</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Jan 2018 — 2023</div>
+                    <div class="timeline-content">
+                        <h3>Senior Researcher</h3>
+                        <p class="company">Software Engineering Lab, JBNU</p>
+                        <p class="description">Conducted advanced research in AI and machine learning applications.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Oct 2020 — 2021</div>
+                    <div class="timeline-content">
+                        <h3>Host Researcher</h3>
+                        <p class="company">International Joint Project</p>
+                        <p class="description">Led international research collaboration between universities in Thailand and South Korea.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-            <!-- Technical Skills -->
-            <section class="section">
-                <h2 class="section-title">
-                    <i class="fas fa-code"></i>
-                    Technical Skills
-                </h2>
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <h3>Programming Languages</h3>
-                        <div class="skills-list">
-                            <span class="skill-tag">Python</span>
-                            <span class="skill-tag">Java</span>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h3>AI/ML Frameworks</h3>
-                        <div class="skills-list">
-                            <span class="skill-tag">PyTorch</span>
-                            <span class="skill-tag">TensorFlow</span>
-                            <span class="skill-tag">OpenCV</span>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Development Frameworks</h3>
-                        <div class="skills-list">
-                            <span class="skill-tag">FastAPI</span>
-                            <span class="skill-tag">Flask</span>
-                            <span class="skill-tag">Spring Boot</span>
-                            <span class="skill-tag">Micronaut</span>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Specializations</h3>
-                        <div class="skills-list">
-                            <span class="skill-tag">Computer Vision</span>
-                            <span class="skill-tag">3D Registration</span>
-                            <span class="skill-tag">Image Processing</span>
-                            <span class="skill-tag">IoT Systems</span>
-                        </div>
+        <section>
+            <div class="section-header"><h2 data-index="04">Key AI/ML Projects</h2></div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>3D Point Cloud Analysis</h3>
+                    <p>Advanced 3D point cloud processing using stereo vision and time-of-flight sensors for livestock weight estimation.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Computer Vision</span>
+                        <span class="tech-tag">3D Processing</span>
                     </div>
                 </div>
-            </section>
+                <div class="project-card">
+                    <h3>Weather Artifact Removal</h3>
+                    <p>Deep learning system for removing particles (rain, snow, fog) from surveillance camera footage for improved face recognition.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Deep Learning</span>
+                        <span class="tech-tag">Image Processing</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <h3>Behavioral Recognition</h3>
+                    <p>AI system for abnormal behavior detection in livestock using computer vision and pattern recognition.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Machine Learning</span>
+                        <span class="tech-tag">Pattern Recognition</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <h3>Deep Network Face Recognition</h3>
+                    <p>Advanced face recognition system using deep neural networks for montage face identification.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Deep Learning</span>
+                        <span class="tech-tag">Face Recognition</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-            <!-- Experience -->
-            <section class="section">
-                <h2 class="section-title">
-                    <i class="fas fa-briefcase"></i>
-                    Professional Experience
-                </h2>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-date">May 2024 - Present</div>
-                        <div class="timeline-content">
-                            <h3>AI Project Manager</h3>
-                            <p class="company">My04 Company, R&D Department</p>
-                            <p class="description">Leading research in AI and 3D reconstruction and representation technologies.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">Oct 2019 - 2023</div>
-                        <div class="timeline-content">
-                            <h3>Development Manager</h3>
-                            <p class="company">AI-Tech Corp., South Korea</p>
-                            <p class="description">Led projects in machine learning, deep learning, and 3D point cloud applications.</p>
-                            <ul class="achievements">
-                                <li>Designed system/software architecture for AI applications</li>
-                                <li>Led cross-functional development teams</li>
-                                <li>Implemented cutting-edge ML/DL solutions</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">Jan 2018 - 2023</div>
-                        <div class="timeline-content">
-                            <h3>Senior Researcher</h3>
-                            <p class="company">Software Engineering Lab, JBNU</p>
-                            <p class="description">Conducted advanced research in AI and machine learning applications.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">Oct 2020 - 2021</div>
-                        <div class="timeline-content">
-                            <h3>Host Researcher</h3>
-                            <p class="company">International Joint Project</p>
-                            <p class="description">Led international research collaboration between universities in Thailand and South Korea.</p>
-                        </div>
-                    </div>
+        <section>
+            <div class="section-header"><h2 data-index="05">Selected Publications</h2></div>
+            <div class="publications-list">
+                <div class="publication-item">
+                    <h3><a href="https://ieeexplore.ieee.org/document/9606733" target="_blank">Removing Snow From a Single Image Using a Residual Frequency Module and Perceptual RaLSGAN</a></h3>
+                    <p class="journal">IEEE Transactions (SCI)</p>
+                    <p class="description">Advanced deep learning approach for weather artifact removal in computer vision systems.</p>
                 </div>
-            </section>
+                <div class="publication-item">
+                    <h3><a href="https://doi.org/10.3390/s20144032" target="_blank">Deep Global Features for Point Cloud Alignment</a></h3>
+                    <p class="journal">Sensors (SCI)</p>
+                    <p class="description">Novel deep learning methods for 3D point cloud registration and alignment.</p>
+                </div>
+                <div class="publication-item">
+                    <h3><a href="https://doi.org/10.3390/app9132668" target="_blank">Image-to-Image Translation Using Identical-Pair Adversarial Networks</a></h3>
+                    <p class="journal">Applied Sciences (SCI)</p>
+                    <p class="description">Innovative GAN architecture for image translation applications.</p>
+                </div>
+            </div>
+            <div class="publications-footer">
+                <a href="http://bit.ly/3fZTNzF" target="_blank" class="scholar-link">
+                    <i class="fas fa-graduation-cap"></i> View all publications on Google Scholar
+                </a>
+            </div>
+        </section>
 
-            <!-- Key Projects -->
-            <section class="section">
-                <h2 class="section-title">
-                    <i class="fas fa-project-diagram"></i>
-                    Key AI/ML Projects
-                </h2>
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <h3>3D Point Cloud Analysis</h3>
-                        <p>Advanced 3D point cloud processing using stereo vision and time-of-flight sensors for livestock weight estimation.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Computer Vision</span>
-                            <span class="tech-tag">3D Processing</span>
-                        </div>
-                    </div>
-                    <div class="project-card">
-                        <h3>Weather Artifact Removal</h3>
-                        <p>Deep learning system for removing particles (rain, snow, fog) from surveillance camera footage for improved face recognition.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Deep Learning</span>
-                            <span class="tech-tag">Image Processing</span>
-                        </div>
-                    </div>
-                    <div class="project-card">
-                        <h3>Behavioral Recognition</h3>
-                        <p>AI system for abnormal behavior detection in livestock using computer vision and pattern recognition.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Machine Learning</span>
-                            <span class="tech-tag">Pattern Recognition</span>
-                        </div>
-                    </div>
-                    <div class="project-card">
-                        <h3>Deep Network Face Recognition</h3>
-                        <p>Advanced face recognition system using deep neural networks for montage face identification.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Deep Learning</span>
-                            <span class="tech-tag">Face Recognition</span>
-                        </div>
-                    </div>
+        <section>
+            <div class="section-header"><h2 data-index="06">Education</h2></div>
+            <div class="education-list">
+                <div class="education-item">
+                    <h3>Ph.D. in Computer Science and Engineering</h3>
+                    <p class="institution">Jeonbuk National University, South Korea</p>
+                    <p class="year">2017 — 2019</p>
                 </div>
-            </section>
+                <div class="education-item">
+                    <h3>Ph.D. in Culture Technology</h3>
+                    <p class="institution">Jeonju University, South Korea</p>
+                    <p class="year">2015 — 2019</p>
+                </div>
+                <div class="education-item">
+                    <h3>M.S. in Information Systems</h3>
+                    <p class="institution">Jeonju University, South Korea</p>
+                    <p class="year">2012 — 2014</p>
+                </div>
+                <div class="education-item">
+                    <h3>B.S. in Computer Science</h3>
+                    <p class="institution">Jeonju University, South Korea</p>
+                    <p class="year">2010 — 2011</p>
+                </div>
+            </div>
+        </section>
+    </main>
 
-            <!-- Publications -->
-            <section class="section">
-                <h2 class="section-title">
-                    <i class="fas fa-file-alt"></i>
-                    Selected Publications
-                </h2>
-                <div class="publications-list">
-                    <div class="publication-item">
-                        <h3><a href="https://ieeexplore.ieee.org/document/9606733" target="_blank">Removing Snow From a Single Image Using a Residual Frequency Module and Perceptual RaLSGAN</a></h3>
-                        <p class="journal">IEEE Transactions (SCI)</p>
-                        <p class="description">Advanced deep learning approach for weather artifact removal in computer vision systems.</p>
-                    </div>
-                    <div class="publication-item">
-                        <h3><a href="https://doi.org/10.3390/s20144032" target="_blank">Deep Global Features for Point Cloud Alignment</a></h3>
-                        <p class="journal">Sensors (SCI)</p>
-                        <p class="description">Novel deep learning methods for 3D point cloud registration and alignment.</p>
-                    </div>
-                    <div class="publication-item">
-                        <h3><a href="https://doi.org/10.3390/app9132668" target="_blank">Image-to-Image Translation Using Identical-Pair Adversarial Networks</a></h3>
-                        <p class="journal">Applied Sciences (SCI)</p>
-                        <p class="description">Innovative GAN architecture for image translation applications.</p>
-                    </div>
-                </div>
-                <div class="publications-footer">
-                    <a href="http://bit.ly/3fZTNzF" target="_blank" class="scholar-link">
-                        <i class="fas fa-graduation-cap"></i>
-                        View all publications on Google Scholar
-                    </a>
-                </div>
-            </section>
-
-            <!-- Education -->
-            <section class="section">
-                <h2 class="section-title">
-                    <i class="fas fa-graduation-cap"></i>
-                    Education
-                </h2>
-                <div class="education-list">
-                    <div class="education-item">
-                        <div class="degree">
-                            <h3>Ph.D. in Computer Science and Engineering</h3>
-                            <p class="institution">Jeonbuk National University, South Korea</p>
-                            <p class="year">2017 - 2019</p>
-                        </div>
-                    </div>
-                    <div class="education-item">
-                        <div class="degree">
-                            <h3>Ph.D. in Culture Technology</h3>
-                            <p class="institution">Jeonju University, South Korea</p>
-                            <p class="year">2015 - 2019</p>
-                        </div>
-                    </div>
-                    <div class="education-item">
-                        <div class="degree">
-                            <h3>M.S. in Information Systems</h3>
-                            <p class="institution">Jeonju University, South Korea</p>
-                            <p class="year">2012 - 2014</p>
-                        </div>
-                    </div>
-                    <div class="education-item">
-                        <div class="degree">
-                            <h3>B.S. in Computer Science</h3>
-                            <p class="institution">Jeonju University, South Korea</p>
-                            <p class="year">2010 - 2011</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
-    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
 </body>
 </html>
